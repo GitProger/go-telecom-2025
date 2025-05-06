@@ -34,16 +34,8 @@ func NewEventMonitor(conf *config.Config) *monitor {
 
 func (em *monitor) DigestEvent(event *model.Event) (*model.Event, error) {
 	if em.delta == 0 {
-		t, err := time.Parse(time.TimeOnly, em.conf.StartDelta)
-		if err != nil {
-			return nil, fmt.Errorf("delta parsing error in config: %w", err)
-		}
-		em.delta = time.Duration(t.Hour())*time.Hour + time.Duration(t.Minute())*time.Minute + time.Duration(t.Second())*time.Second
-
-		em.defaultStart, err = time.Parse(time.TimeOnly, em.conf.Start)
-		if err != nil {
-			return nil, fmt.Errorf("start time parsing error in config: %w", err)
-		}
+		em.delta = em.conf.StartDelta
+		em.defaultStart = em.conf.Start
 	}
 
 	em.lastTime = event.Time

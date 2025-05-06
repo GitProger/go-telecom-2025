@@ -15,8 +15,8 @@ func TestCompetitor(t *testing.T) {
 		LapLen:      3651,
 		PenaltyLen:  50,
 		FiringLines: 1,
-		Start:       "09:30:00",
-		StartDelta:  "00:00:30",
+		Start:       time.Date(0, 1, 1, 9, 30, 0, 0, time.UTC),
+		StartDelta:  30 * time.Second,
 	}
 	comp := model.NewCompetitor(1, &config)
 	comp.Status = model.NotFinished

@@ -3,6 +3,7 @@ package config_test
 import (
 	"os"
 	"testing"
+	"time"
 
 	"github.com/GitProger/go-telecom-2025/internal/config"
 	"github.com/stretchr/testify/assert"
@@ -23,8 +24,8 @@ func TestConfig(t *testing.T) {
 		LapLen:      3651,
 		PenaltyLen:  50,
 		FiringLines: 1,
-		Start:       "09:30:00",
-		StartDelta:  "00:00:30",
+		Start:       time.Date(0, 1, 1, 9, 30, 0, 0, time.UTC),
+		StartDelta:  30 * time.Second,
 	}
 
 	configLoaded, err := config.LoadConfig(tmpFile.Name())
