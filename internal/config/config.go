@@ -22,13 +22,12 @@ func LoadConfig(path string) (*Config, error) {
 	}
 	var config Config
 
-	type Alias Config
 	aux := &struct {
 		Start      string `json:"start"`
 		StartDelta string `json:"startDelta"`
-		*Alias
+		*Config
 	}{
-		Alias: (*Alias)(&config),
+		Config: &config,
 	}
 
 	if err := json.Unmarshal(data, &aux); err != nil {
