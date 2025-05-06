@@ -40,7 +40,7 @@ func (em *monitor) DigestEvent(event *model.Event) (*model.Event, error) {
 		}
 		em.delta = time.Duration(t.Hour())*time.Hour + time.Duration(t.Minute())*time.Minute + time.Duration(t.Second())*time.Second
 
-		em.defaultStart, err = time.Parse(model.TimeLayout, em.conf.Start)
+		em.defaultStart, err = time.Parse("15:04:05", em.conf.Start)
 		if err != nil {
 			return nil, fmt.Errorf("start time parsing error in config: %w", err)
 		}
