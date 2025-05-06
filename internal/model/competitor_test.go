@@ -27,6 +27,6 @@ func TestCompetitor(t *testing.T) {
 	assert.Equal(t, comp.String(), "[NotFinished] 1 [{00:29:03.872, 2.093}, {,}] {00:01:44.296, 0.479} 4/5")
 	// 0.481 * 1:44.296 is 50.166376
 	// while 104.296*0.480 = 50.06208
-	//       104.296*0.479 = 50.16637
+	//       104.296*0.479 = 49.95778
 	// which is way closer, so there is an error in the README.md's example
 }
